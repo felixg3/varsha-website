@@ -11,6 +11,9 @@ assets = { directory = "./public", binding = "ASSETS" }
 [vars]
 SITE_URL = "https://varsha.de"
 
+[observability.logs]
+enabled = true
+
 # Custom domain routing
 [[routes]]
 pattern = "varsha.de/*"
