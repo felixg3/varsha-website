@@ -2,12 +2,12 @@ name: Varsha Iyer                                #
 date_of_birth: 1996-01-25                        # 
 
 contact:
-  email: varsha@giessmann.net                    # 
-  phone: "+49 178 511 2220"                      # 
+  email: mail@varsha.de                          # 
+  phone: "+49 15678 248382"                      # 
   address: Beukenstraat 69A2, 1630 Linkebeek, BE # 
 
 summary: |
-  Multilingual linguist and conference interpreter.  
+  • Multilingual linguist and conference interpreter.  
   • Blue Book trainee, DG SCIC — Documentation & Terminology (Mar–Jul 2025), maintaining IATE and migrating legacy glossaries from HTML/Excel to SharePoint.  
   • From Sep 2025: European Interdisciplinary Studies (College of Europe, Natolin) on NRW scholarship.   # 
 
