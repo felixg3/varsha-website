@@ -1,0 +1,21 @@
+# Cloudflare Workers configuration
+name = "varsha-website"
+main = "./dist/_worker.js"
+compatibility_date = "2025-06-28"
+compatibility_flags = ["nodejs_compat"]
+account_id = "7527200379c7d3d068b06ef8231d9dd3"
+
+# Static asset handling
+assets = { directory = "./public", binding = "ASSETS" }
+
+[vars]
+SITE_URL = "https://varsha.de"
+
+# Custom domain routing
+[[routes]]
+pattern = "varsha.de/*"
+zone_name = "varsha.de"
+
+[[routes]]
+pattern = "www.varsha.de/*"
+zone_name = "varsha.de"

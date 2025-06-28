@@ -1,0 +1,41 @@
+{
+  "name": "varsha-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "bun run build && bun run deploy:cf",
+    "deploy:cf": "node scripts/deploy.js",
+    "setup-auth": "node scripts/setup-auth.js",
+    "check-access": "node scripts/check-access.js",
+    "deploy:simple": "bun run build && npx wrangler deploy",
+    "reset-auth": "npx wrangler logout && npx wrangler login",
+    "setup-domain": "node scripts/setup-domain-simple.js",
+    "deploy:full": "bun run deploy && bun run setup-domain"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felixg3/varsha-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/felixg3/varsha-website/issues"
+  },
+  "homepage": "https://github.com/felixg3/varsha-website#readme",
+  "dependencies": {
+    "@astrojs/cloudflare": "^12.6.0",
+    "astro": "^5.10.1",
+    "cloudflare": "^4.4.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250628.0",
+    "wrangler": "^4.22.0"
+  }
+}
