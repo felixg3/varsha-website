@@ -1,7 +1,7 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
 import { j as joinPaths, i as isRemotePath } from './path_C-ZOwaTP.mjs';
 import { A as AstroError, an as ExpectedImage, ao as LocalImageUsedWrongly, ap as MissingImageDimension, aq as UnsupportedImageFormat, ar as IncompatibleDescriptorOptions, as as UnsupportedImageConversion, at as toStyleString, au as NoImageMetadata, av as FailedToFetchRemoteImageDimensions, aw as ExpectedImageOptions, ax as ExpectedNotESMImage, ay as InvalidImageService, i as createAstro, c as createComponent, az as ImageMissingAlt, m as maybeRenderHead, j as addAttribute, p as spreadAttributes, a as renderTemplate, aA as ExperimentalFontsNotEnabled, aB as FontFamilyNotFound, u as unescapeHTML } from './astro/server_Cup-hlYI.mjs';
-import { D as DEFAULT_OUTPUT_FORMAT, V as VALID_SUPPORTED_FORMATS, a as DEFAULT_HASH_PROPS } from './work_Bx7mRWI_.mjs';
+import { D as DEFAULT_OUTPUT_FORMAT, V as VALID_SUPPORTED_FORMATS, a as DEFAULT_HASH_PROPS } from './work_DC6rwHYX.mjs';
 
 const DEFAULT_RESOLUTIONS = [
   640,
@@ -1233,7 +1233,7 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      './sharp_B4aomEbP.mjs'
+      './sharp_DQBdlnEY.mjs'
     ).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;
@@ -1402,7 +1402,7 @@ const $$Image = createComponent(async ($$result, $$props, $$slots) => {
   }
   const { class: className, ...attributes } = { ...additionalAttributes, ...image.attributes };
   return renderTemplate`${maybeRenderHead()}<img${addAttribute(image.src, "src")}${spreadAttributes(attributes)}${addAttribute(className, "class")}>`;
-}, "/Users/felix/Documents/GitHub/varsha-website/node_modules/astro/components/Image.astro", void 0);
+}, "/workspace/varsha-website/node_modules/astro/components/Image.astro", void 0);
 
 const mimes = {
   "3g2": "video/3gpp2",
@@ -1920,7 +1920,7 @@ const $$Picture = createComponent(async ($$result, $$props, $$slots) => {
     const srcsetAttribute = props.densities || !props.densities && !props.widths && !useResponsive ? `${image.src}${image.srcSet.values.length > 0 ? ", " + image.srcSet.attribute : ""}` : image.srcSet.attribute;
     return renderTemplate`<source${addAttribute(srcsetAttribute, "srcset")}${addAttribute(lookup(image.options.format ?? image.src) ?? `image/${image.options.format}`, "type")}${spreadAttributes(sourceAdditionalAttributes)}>`;
   })}  <img${addAttribute(fallbackImage.src, "src")}${spreadAttributes(attributes)}${addAttribute(className, "class")}> </picture>`;
-}, "/Users/felix/Documents/GitHub/varsha-website/node_modules/astro/components/Picture.astro", void 0);
+}, "/workspace/varsha-website/node_modules/astro/components/Picture.astro", void 0);
 
 const mod = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null
@@ -1943,7 +1943,7 @@ const $$Font = createComponent(($$result, $$props, $$slots) => {
     });
   }
   return renderTemplate`${preload && data.preloadData.map(({ url, type }) => renderTemplate`<link rel="preload"${addAttribute(url, "href")} as="font"${addAttribute(`font/${type}`, "type")} crossorigin>`)}<style>${unescapeHTML(data.css)}</style>`;
-}, "/Users/felix/Documents/GitHub/varsha-website/node_modules/astro/components/Font.astro", void 0);
+}, "/workspace/varsha-website/node_modules/astro/components/Font.astro", void 0);
 
 const imageConfig = {"endpoint":{"route":"/_image","entrypoint":"@astrojs/cloudflare/image-endpoint"},"service":{"entrypoint":"astro/assets/services/sharp","config":{}},"domains":[],"remotePatterns":[],"responsiveStyles":false};
 							const getImage = async (options) => await getImage$1(options, imageConfig);
