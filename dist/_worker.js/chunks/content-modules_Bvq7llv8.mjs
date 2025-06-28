@@ -1,4 +1,1 @@
-globalThis.process ??= {}; globalThis.process.env ??= {};
-const contentModules = new Map();
-
-export { contentModules as default };
+// Contents removed by Astro as it's used for prerendering only
