@@ -3,3 +3,5 @@ secrets
 node_modules
 .astro
 .DS_Store
+chrome-mac-arm64.zip
+chrome-mac-arm64/
