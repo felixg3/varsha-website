@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "rm -rf dist .astro node_modules/.astro public/_astro && astro build && cp -r dist/_astro public/_astro",
+    "build": "rm -rf dist .astro public/_astro public/_worker.js && astro build",
     "preview": "astro preview",
     "deploy": "bun run build && bun run deploy:cf",
     "deploy:cf": "node scripts/deploy.js",
