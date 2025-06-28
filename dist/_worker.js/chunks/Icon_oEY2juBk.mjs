@@ -35,7 +35,7 @@ const $$MainHead = createComponent(($$result, $$props, $$slots) => {
 		observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 	}
 <\/script>`])), addAttribute(description, "content"), addAttribute(Astro2.generator, "content"), title);
-}, "/workspace/varsha-website/src/components/MainHead.astro", void 0);
+}, "/Users/felix/Documents/GitHub/varsha-website/src/components/MainHead.astro", void 0);
 
 const $$Astro$1 = createAstro("https://varsha.de");
 const $$BaseLayout = createComponent(($$result, $$props, $$slots) => {
@@ -43,7 +43,7 @@ const $$BaseLayout = createComponent(($$result, $$props, $$slots) => {
   Astro2.self = $$BaseLayout;
   const { title, description } = Astro2.props;
   return renderTemplate`<html lang="en"> <head>${renderComponent($$result, "MainHead", $$MainHead, { "title": title, "description": description })}<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">${renderHead()}</head> <body> ${renderSlot($$result, $$slots["default"])} </body></html>`;
-}, "/workspace/varsha-website/src/layouts/BaseLayout.astro", void 0);
+}, "/Users/felix/Documents/GitHub/varsha-website/src/layouts/BaseLayout.astro", void 0);
 
 const iconPaths = {
   "terminal-window": `<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="m80 96 40 32-40 32m56 0h40"/><rect width="192" height="160" x="32" y="48" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.97" rx="8.5"/>`,
@@ -86,6 +86,6 @@ const $$Icon = createComponent(($$result, $$props, $$slots) => {
   if (size) attrs.style = { "--size": size };
   const gradientId = "icon-gradient-" + Math.round(Math.random() * 1e13).toString(36);
   return renderTemplate`${maybeRenderHead()}<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256" aria-hidden="true"${addAttribute(gradient ? `url(#${gradientId})` : color, "stroke")}${addAttribute(gradient ? `url(#${gradientId})` : color, "fill")}${spreadAttributes(attrs, void 0, { "class": "astro-patnjmll" })} data-astro-cid-patnjmll> <g data-astro-cid-patnjmll>${unescapeHTML(iconPath)}</g> ${gradient && renderTemplate`<linearGradient${addAttribute(gradientId, "id")} x1="23" x2="235" y1="43" y2="202" gradientUnits="userSpaceOnUse" data-astro-cid-patnjmll> <stop stop-color="var(--gradient-stop-1)" data-astro-cid-patnjmll></stop> <stop offset=".5" stop-color="var(--gradient-stop-2)" data-astro-cid-patnjmll></stop> <stop offset="1" stop-color="var(--gradient-stop-3)" data-astro-cid-patnjmll></stop> </linearGradient>`} </svg> `;
-}, "/workspace/varsha-website/src/components/Icon.astro", void 0);
+}, "/Users/felix/Documents/GitHub/varsha-website/src/components/Icon.astro", void 0);
 
 export { $$BaseLayout as $, $$Icon as a };

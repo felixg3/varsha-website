@@ -1,3 +1,5 @@
 *.pdf
 secrets
 node_modules
+.astro
+.DS_Store

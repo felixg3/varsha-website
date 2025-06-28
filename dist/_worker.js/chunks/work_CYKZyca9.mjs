@@ -2,7 +2,7 @@ globalThis.process ??= {}; globalThis.process.env ??= {};
 import { o as objectType, d as dateType, n as numberType, b as arrayType, s as stringType, A as AstroError, U as UnknownContentCollectionError, c as createComponent, R as RenderUndefinedEntryError, u as unescapeHTML, a as renderTemplate, e as escape, f as renderUniqueStylesheet, g as renderScriptElement, h as createHeadAndContent, r as renderComponent, i as createAstro, m as maybeRenderHead, j as addAttribute, k as renderSlot } from './astro/server_Cup-hlYI.mjs';
 import { r as removeBase, i as isRemotePath, p as prependForwardSlash } from './path_C-ZOwaTP.mjs';
 import { u as unflatten } from './parse_EttCPxrw.mjs';
-import { a as $$Icon, $ as $$BaseLayout } from './Icon_D8fCILJI.mjs';
+import { a as $$Icon, $ as $$BaseLayout } from './Icon_oEY2juBk.mjs';
 /* empty css                        */
 import '../renderers.mjs';
 
@@ -437,7 +437,7 @@ const CONTENT_LAYER_IMAGE_REGEX = /__ASTRO_IMAGE_="([^"]+)"/g;
 async function updateImageReferencesInBody(html, fileName) {
   const { default: imageAssetMap } = await import('./content-assets_XqCgPAV2.mjs');
   const imageObjects = /* @__PURE__ */ new Map();
-  const { getImage } = await import('./_astro_assets_3qpfJ34T.mjs').then(n => n._);
+  const { getImage } = await import('./_astro_assets__wSZyvHP.mjs').then(n => n._);
   for (const [_full, imagePath] of html.matchAll(CONTENT_LAYER_IMAGE_REGEX)) {
     try {
       const decodedImagePath = JSON.parse(imagePath.replaceAll("&#x22;", '"'));
@@ -654,7 +654,7 @@ const $$CallToAction = createComponent(($$result, $$props, $$slots) => {
   Astro2.self = $$CallToAction;
   const { href } = Astro2.props;
   return renderTemplate`${maybeRenderHead()}<a${addAttribute(href, "href")} data-astro-cid-balv45lp>${renderSlot($$result, $$slots["default"])}</a> `;
-}, "/workspace/varsha-website/src/components/CallToAction.astro", void 0);
+}, "/Users/felix/Documents/GitHub/varsha-website/src/components/CallToAction.astro", void 0);
 
 const $$ContactCTA = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<aside data-astro-cid-rcdzuq3a> <h2 data-astro-cid-rcdzuq3a>Ready to work together?</h2> <div class="contact-options" data-astro-cid-rcdzuq3a> ${renderComponent($$result, "CallToAction", $$CallToAction, { "href": "mailto:mail@varsha.de", "data-astro-cid-rcdzuq3a": true }, { "default": ($$result2) => renderTemplate`
@@ -662,7 +662,7 @@ Send Me a Message
 ${renderComponent($$result2, "Icon", $$Icon, { "icon": "paper-plane-tilt", "size": "1.2em", "data-astro-cid-rcdzuq3a": true })} ` })} ${renderComponent($$result, "CallToAction", $$CallToAction, { "href": "https://www.linkedin.com/in/varshaviyer/", "target": "_blank", "rel": "noopener", "data-astro-cid-rcdzuq3a": true }, { "default": ($$result2) => renderTemplate`
 LinkedIn
 ${renderComponent($$result2, "Icon", $$Icon, { "icon": "linkedin-logo", "size": "1.2em", "data-astro-cid-rcdzuq3a": true })} ` })} </div> <div class="contact-details" data-astro-cid-rcdzuq3a> <p data-astro-cid-rcdzuq3a>Tel. +49 178 511 2220</p> <p data-astro-cid-rcdzuq3a>Based in Germany • Available globally via remote interpretation</p> </div> </aside> `;
-}, "/workspace/varsha-website/src/components/ContactCTA.astro", void 0);
+}, "/Users/felix/Documents/GitHub/varsha-website/src/components/ContactCTA.astro", void 0);
 
 const $$Astro$2 = createAstro("https://varsha.de");
 const $$PortfolioPreview = createComponent(($$result, $$props, $$slots) => {
@@ -670,7 +670,7 @@ const $$PortfolioPreview = createComponent(($$result, $$props, $$slots) => {
   Astro2.self = $$PortfolioPreview;
   const { data, id } = Astro2.props.project;
   return renderTemplate`${maybeRenderHead()}<a class="card"${addAttribute(`/work/${id}`, "href")} data-astro-cid-lgkm4u2a> <span class="title" data-astro-cid-lgkm4u2a>${data.title}</span> <img${addAttribute(data.img, "src")}${addAttribute(data.img_alt || "", "alt")} loading="lazy" decoding="async" data-astro-cid-lgkm4u2a> </a> `;
-}, "/workspace/varsha-website/src/components/PortfolioPreview.astro", void 0);
+}, "/Users/felix/Documents/GitHub/varsha-website/src/components/PortfolioPreview.astro", void 0);
 
 const $$Astro$1 = createAstro("https://varsha.de");
 const $$Hero = createComponent(($$result, $$props, $$slots) => {
@@ -678,7 +678,7 @@ const $$Hero = createComponent(($$result, $$props, $$slots) => {
   Astro2.self = $$Hero;
   const { align = "center", tagline, title } = Astro2.props;
   return renderTemplate`${maybeRenderHead()}<div${addAttribute(["hero stack gap-4", align], "class:list")} data-astro-cid-bbe6dxrz> <div class="stack gap-2" data-astro-cid-bbe6dxrz> <h1 class="title" data-astro-cid-bbe6dxrz>${title}</h1> ${tagline && renderTemplate`<p class="tagline" data-astro-cid-bbe6dxrz>${tagline}</p>`} </div> ${renderSlot($$result, $$slots["default"])} </div> `;
-}, "/workspace/varsha-website/src/components/Hero.astro", void 0);
+}, "/Users/felix/Documents/GitHub/varsha-website/src/components/Hero.astro", void 0);
 
 const $$Astro = createAstro("https://varsha.de");
 const $$Grid = createComponent(($$result, $$props, $$slots) => {
@@ -686,16 +686,16 @@ const $$Grid = createComponent(($$result, $$props, $$slots) => {
   Astro2.self = $$Grid;
   const { variant } = Astro2.props;
   return renderTemplate`${maybeRenderHead()}<ul${addAttribute(["grid", { offset: variant === "offset", small: variant === "small" }], "class:list")} data-astro-cid-vc5tsdmu> ${renderSlot($$result, $$slots["default"])} </ul> `;
-}, "/workspace/varsha-website/src/components/Grid.astro", void 0);
+}, "/Users/felix/Documents/GitHub/varsha-website/src/components/Grid.astro", void 0);
 
 const $$Work = createComponent(async ($$result, $$props, $$slots) => {
   const projects = (await getCollection("work")).sort(
     (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
   );
   return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": "My Work | Jeanine White", "description": "Learn about Jeanine White's most recent projects" }, { "default": async ($$result2) => renderTemplate` ${maybeRenderHead()}<div class="stack gap-20"> <main class="wrapper stack gap-8"> ${renderComponent($$result2, "Hero", $$Hero, { "title": "My Work", "tagline": "See my most recent projects below to get an idea of my past experience.", "align": "start" })} ${renderComponent($$result2, "Grid", $$Grid, { "variant": "offset" }, { "default": async ($$result3) => renderTemplate`${projects.map((project) => renderTemplate`<li> ${renderComponent($$result3, "PortfolioPreview", $$PortfolioPreview, { "project": project })} </li>`)}` })} </main> ${renderComponent($$result2, "ContactCTA", $$ContactCTA, {})} </div> ` })}`;
-}, "/workspace/varsha-website/src/pages/work.astro", void 0);
+}, "/Users/felix/Documents/GitHub/varsha-website/src/pages/work.astro", void 0);
 
-const $$file = "/workspace/varsha-website/src/pages/work.astro";
+const $$file = "/Users/felix/Documents/GitHub/varsha-website/src/pages/work.astro";
 const $$url = "/work";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
