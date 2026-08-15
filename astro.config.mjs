@@ -1,25 +1,9 @@
-import { defineConfig } from 'astro/config';
-import cloudflare from '@astrojs/cloudflare';
+// @ts-check
+import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  output: 'static',
-  adapter: cloudflare({
-    mode: 'directory',
-    functionPerRoute: false
-  }),
-  site: 'https://varsha.de',
-  build: {
-    assets: '_astro',
-    format: 'directory'
-  },
-  vite: {
-    build: {
-      assetsInlineLimit: 0,
-      rollupOptions: {
-        output: {
-          assetFileNames: '_astro/[name].[hash][extname]'
-        }
-      }
-    }
-  }
+  site: "https://varsha.de",
+  output: "static",
+  trailingSlash: "never",
+  build: { format: "file" },
 });
