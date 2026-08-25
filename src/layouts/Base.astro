@@ -1,0 +1,157 @@
+---
+import "../styles/global.css";
+import { CONTENT, LOCALES, DEFAULT_LOCALE, localeHref, type Locale } from "../i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = CONTENT[locale];
+
+const canonical = new URL(localeHref(locale), Astro.site).href;
+const year = new Date().getUTCFullYear();
+
+const nav = [
+  ["about", t.nav.about],
+  ["practice", t.nav.practice],
+  ["experience", t.nav.experience],
+  ["education", t.nav.education],
+  ["languages", t.nav.languages],
+  ["contact", t.nav.contact],
+] as const;
+---
+
+<!doctype html>
+<html lang={t.htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t.meta.title}</title>
+    <meta name="description" content={t.meta.description} />
+    <link rel="canonical" href={canonical} />
+
+    {
+      LOCALES.map((l) => (
+        <link
+          rel="alternate"
+          hreflang={CONTENT[l].htmlLang}
+          href={new URL(localeHref(l), Astro.site).href}
+        />
+      ))
+    }
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(localeHref(DEFAULT_LOCALE), Astro.site).href}
+    />
+
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={t.meta.title} />
+    <meta property="og:description" content={t.meta.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={t.htmlLang} />
+    <meta property="og:image" content={new URL("/portrait.jpg", Astro.site).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- Preload only the script this page actually renders in. -->
+    {
+      locale === "hi" ? (
+        <link
+          rel="preload"
+          href="/fonts/noto-serif-devanagari-400.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
+      ) : locale === "ta" ? (
+        <link
+          rel="preload"
+          href="/fonts/noto-serif-tamil-400.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
+      ) : (
+        <link
+          rel="preload"
+          href="/fonts/lora-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
+      )
+    }
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Varsha Iyer",
+        jobTitle: t.hero.role,
+        url: canonical,
+        email: "mailto:mail@varsha.de",
+        sameAs: ["https://www.linkedin.com/in/varshaviyer/"],
+        knowsLanguage: ["ta", "en", "de", "fr", "hi"],
+        address: { "@type": "PostalAddress", addressLocality: "Wuppertal", addressCountry: "DE" },
+      })}
+    />
+  </head>
+
+  <body>
+    <a class="skip" href="#main">{t.nav.skipToContent}</a>
+
+    <header class="topbar">
+      <div class="shell topbar__inner">
+        <a class="topbar__name" href={localeHref(locale)}>{t.hero.name}</a>
+        <nav aria-label={t.nav.chooseLanguage}>
+          <ul class="langs">
+            {
+              LOCALES.map((l) => (
+                <li>
+                  <a
+                    href={localeHref(l)}
+                    lang={CONTENT[l].htmlLang}
+                    hreflang={CONTENT[l].htmlLang}
+                    aria-current={l === locale ? "true" : undefined}
+                  >
+                    {CONTENT[l].endonym}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="foot">
+      <div class="shell">
+        <nav aria-label={t.nav.chooseLanguage} style="margin-bottom:1rem">
+          <ul class="langs" style="margin-left:-0.6rem">
+            {
+              nav.map(([id, label]) => (
+                <li>
+                  <a href={`#${id}`}>{label}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+        <p>
+          <a href="/impressum">{t.legal.impressumLabel}</a> &middot;
+          <a href="/datenschutz">{t.legal.privacyLabel}</a>
+        </p>
+        <p>&copy; {year} {t.hero.name}. {t.footer.rights}</p>
+        <p>{t.footer.imprintNote}</p>
+      </div>
+    </footer>
+  </body>
+</html>

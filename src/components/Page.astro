@@ -1,0 +1,235 @@
+---
+import { CONTENT, LOCALES, type Locale } from "../i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = CONTENT[locale];
+---
+
+<!-- ------------------------------------------------------------- hero -->
+<section class="hero">
+  <div class="shell hero__grid">
+    <div>
+      <p class="label hero__role">{t.hero.role}</p>
+      <h1>{t.hero.name}</h1>
+      <p class="hero__tagline">{t.hero.tagline}</p>
+
+      <ul class="creds">
+        {t.hero.credentials.map((c) => <li>{c.label}</li>)}
+      </ul>
+
+      <div class="actions">
+        <a class="btn btn--primary" href="mailto:mail@varsha.de">
+          {t.hero.ctaContact}
+        </a>
+        <a
+          class="btn btn--ghost"
+          href="https://www.linkedin.com/in/varshaviyer/"
+          rel="noopener"
+        >
+          {t.hero.ctaLinkedIn}
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__portrait">
+      <img
+        src="/portrait.jpg"
+        alt={t.hero.portraitAlt}
+        width="640"
+        height="800"
+        fetchpriority="high"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------------------ booth -->
+<section class="booth">
+  <div class="shell">
+    <p class="label">{t.booth.heading}</p>
+    <ul class="booth__list">
+      {
+        LOCALES.map((l) => (
+          <li>
+            <span class="booth__lang">{CONTENT[l].endonym}</span>
+            <span class="booth__line" lang={CONTENT[l].htmlLang}>
+              {CONTENT[l].hero.role}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="booth__note">{t.booth.note}</p>
+  </div>
+</section>
+
+<!-- ------------------------------------------------------------ about -->
+<section class="band" id="about">
+  <div class="shell">
+    <div class="band__head">
+      <p class="label">01</p>
+      <h2>{t.about.heading}</h2>
+    </div>
+    <div class="two-col">
+      <div>
+        {t.about.paragraphs.slice(0, 2).map((p) => <p>{p}</p>)}
+      </div>
+      <div>
+        {t.about.paragraphs.slice(2).map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- --------------------------------------------------------- practice -->
+<section class="band" id="practice">
+  <div class="shell">
+    <div class="band__head">
+      <p class="label">02</p>
+      <h2>{t.practice.heading}</h2>
+      <p class="band__intro">{t.practice.intro}</p>
+    </div>
+    <div class="cards">
+      {
+        t.practice.items.map((item) => (
+          <article class="card">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------------- experience -->
+<section class="band" id="experience">
+  <div class="shell">
+    <div class="band__head">
+      <p class="label">03</p>
+      <h2>{t.experience.heading}</h2>
+    </div>
+    <ul class="entries">
+      {
+        t.experience.entries.map((e) => (
+          <li class={e.feature ? "entry entry--feature" : "entry"}>
+            <p class="entry__period">{e.period}</p>
+            <div>
+              <p class="entry__role">{e.role}</p>
+              <p class="entry__org">{e.org}</p>
+              <ul class="entry__detail">
+                {e.detail.map((d) => (
+                  <li>{d}</li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- -------------------------------------------------------- education -->
+<section class="band" id="education">
+  <div class="shell">
+    <div class="band__head">
+      <p class="label">04</p>
+      <h2>{t.education.heading}</h2>
+    </div>
+    <ul class="entries">
+      {
+        t.education.entries.map((e) => (
+          <li class={e.feature ? "entry entry--feature" : "entry"}>
+            <p class="entry__period">{e.period}</p>
+            <div>
+              <p class="entry__role">{e.role}</p>
+              <p class="entry__org">{e.org}</p>
+              <ul class="entry__detail">
+                {e.detail.map((d) => (
+                  <li>{d}</li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <h3 style="margin-top:2.5rem;margin-bottom:0.8rem">
+      {t.education.qualificationsHeading}
+    </h3>
+    <ul class="quals">
+      {t.education.qualifications.map((q) => <li>{q}</li>)}
+    </ul>
+  </div>
+</section>
+
+<!-- -------------------------------------------------------- languages -->
+<section class="band" id="languages">
+  <div class="shell">
+    <div class="band__head">
+      <p class="label">05</p>
+      <h2>{t.languages.heading}</h2>
+      <p class="band__intro">{t.languages.intro}</p>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <table class="langtable">
+          <tbody>
+            {
+              t.languages.rows.map((r) => (
+                <tr>
+                  <td class="lang-name">{r.name}</td>
+                  <td class="lang-level">{r.level}</td>
+                  <td class="lang-note">{r.note ?? ""}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="combination">
+          <h3>{t.languages.combinationHeading}</h3>
+          <p>{t.languages.combinationNote}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------------------------------------------------- contact -->
+<section class="band" id="contact" style="border-bottom:0">
+  <div class="shell">
+    <div class="band__head">
+      <p class="label">06</p>
+      <h2>{t.contact.heading}</h2>
+    </div>
+    <p style="max-width:56ch">{t.contact.intro}</p>
+
+    <ul class="contact-list">
+      <li>
+        <p class="c-label">{t.contact.emailLabel}</p>
+        <p class="c-value">
+          <a href="mailto:mail@varsha.de">mail@varsha.de</a>
+        </p>
+      </li>
+      <li>
+        <p class="c-label">{t.contact.phoneLabel}</p>
+        <p class="c-value">
+          <a href="tel:+4915678248382">+49 15678 248382</a>
+        </p>
+      </li>
+      <li>
+        <p class="c-label">{t.contact.locationLabel}</p>
+        <p class="c-value">{t.contact.location}</p>
+      </li>
+    </ul>
+  </div>
+</section>

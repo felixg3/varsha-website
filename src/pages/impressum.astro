@@ -1,0 +1,169 @@
+---
+import "../styles/global.css";
+import { LEGAL, legalGaps } from "../legal";
+
+const gaps = legalGaps();
+const a = LEGAL.address;
+const canonical = new URL("/impressum", Astro.site).href;
+const year = new Date().getUTCFullYear();
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Impressum — {LEGAL.name}</title>
+    <meta
+      name="description"
+      content={`Impressum und Anbieterkennzeichnung nach § 5 DDG für ${LEGAL.name}, ${LEGAL.role}, ${a.city}.`}
+    />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="shell topbar__inner">
+        <a class="topbar__name" href="/">{LEGAL.name}</a>
+        <nav>
+          <ul class="langs">
+            <li><a href="/">Startseite</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="band" style="border-bottom:0">
+      <div class="shell" style="max-width:44rem">
+        {
+          gaps.length > 0 && (
+            <div
+              style="border:2px solid #b3261e;background:#fdecea;color:#5f1512;padding:1rem 1.25rem;border-radius:6px;margin-bottom:2.5rem"
+            >
+              <p style="margin:0 0 .5rem;font-weight:700">
+                Noch nicht vollständig — nicht veröffentlichen
+              </p>
+              <ul style="margin:0;padding-left:1.1rem">
+                {gaps.map((g) => (
+                  <li style="margin-bottom:.3rem">{g}</li>
+                ))}
+              </ul>
+              <p style="margin:.6rem 0 0;font-size:.875rem">
+                Diese Angaben in <code>src/legal.ts</code> ergänzen; dieser
+                Hinweis verschwindet dann automatisch.
+              </p>
+            </div>
+          )
+        }
+
+        <p class="label">Angaben gemäß § 5 DDG</p>
+        <h1 style="font-size:clamp(2rem,4vw,2.75rem);margin:.5rem 0 2rem">
+          Impressum
+        </h1>
+
+        <h2 style="font-size:1.125rem;margin-bottom:.5rem">Diensteanbieterin</h2>
+        <p>
+          {LEGAL.name}<br />
+          {LEGAL.role}<br />
+          {a.street}<br />
+          {a.postcode}&nbsp;{a.city}<br />
+          {a.country}
+        </p>
+
+        <h2 style="font-size:1.125rem;margin:2rem 0 .5rem">Kontakt</h2>
+        <p>
+          E-Mail: <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a><br />
+          Telefon: <a href={`tel:${LEGAL.phone.replace(/\s/g, "")}`}>{LEGAL.phone}</a>
+        </p>
+
+        <h2 style="font-size:1.125rem;margin:2rem 0 .5rem">
+          Berufsbezeichnungen und berufsrechtliche Regelungen
+        </h2>
+        {
+          LEGAL.titles.map((t) => (
+            <p>
+              {t.kind}: {t.title}
+              <br />
+              Verliehen durch: {t.conferredBy}
+            </p>
+          ))
+        }
+        {
+          LEGAL.sworn && LEGAL.swornBy ? (
+            <p>Allgemein beeidigte Dolmetscherin: {LEGAL.swornBy}</p>
+          ) : null
+        }
+        <p>
+          Der Beruf der Konferenzdolmetscherin ist in der Bundesrepublik
+          Deutschland nicht reglementiert; es besteht keine Kammerzugehörigkeit
+          und keine Pflichtmitgliedschaft in einer Berufsvertretung. Die oben
+          genannten Bezeichnungen beruhen auf dem an der Ruprecht-Karls-
+          Universität Heidelberg erworbenen akademischen Grad sowie auf der
+          staatlichen Dolmetscherprüfung.
+        </p>
+
+        <h2 style="font-size:1.125rem;margin:2rem 0 .5rem">Umsatzsteuer</h2>
+        {
+          LEGAL.vatId ? (
+            <p>
+              Umsatzsteuer-Identifikationsnummer gemäß § 27a
+              Umsatzsteuergesetz: {LEGAL.vatId}
+            </p>
+          ) : LEGAL.kleinunternehmer ? (
+            <p>
+              Als Kleinunternehmerin im Sinne des § 19 Umsatzsteuergesetz wird
+              keine Umsatzsteuer berechnet und daher auch nicht ausgewiesen.
+            </p>
+          ) : (
+            <p><em>Angabe ausstehend.</em></p>
+          )
+        }
+
+        <h2 style="font-size:1.125rem;margin:2rem 0 .5rem">
+          Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
+        </h2>
+        <p>{LEGAL.name}, Anschrift wie oben.</p>
+
+        <h2 style="font-size:1.125rem;margin:2rem 0 .5rem">
+          Verbraucherstreitbeilegung
+        </h2>
+        <p>
+          Ich bin weder bereit noch verpflichtet, an Streitbeilegungsverfahren
+          vor einer Verbraucherschlichtungsstelle teilzunehmen.
+        </p>
+
+        <h2 style="font-size:1.125rem;margin:2rem 0 .5rem">Haftung für Links</h2>
+        <p>
+          Dieses Angebot enthält Links zu externen Websites Dritter, auf deren
+          Inhalte ich keinen Einfluss habe. Für diese fremden Inhalte kann
+          keine Gewähr übernommen werden. Für die Inhalte der verlinkten Seiten
+          ist stets die jeweilige Anbieterin oder der jeweilige Anbieter
+          verantwortlich. Bei Bekanntwerden von Rechtsverletzungen werden
+          derartige Links umgehend entfernt.
+        </p>
+
+        <h2 style="font-size:1.125rem;margin:2rem 0 .5rem">Urheberrecht</h2>
+        <p>
+          Die auf dieser Website erstellten Inhalte unterliegen dem deutschen
+          Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet.
+          Vervielfältigung, Bearbeitung und Verbreitung außerhalb der Grenzen
+          des Urheberrechts bedürfen der schriftlichen Zustimmung.
+        </p>
+
+        <p style="margin-top:2.5rem">
+          <a href="/">← Zurück zur Startseite</a> &middot;
+          <a href="/datenschutz">Datenschutzerklärung</a>
+        </p>
+      </div>
+    </main>
+
+    <footer class="foot">
+      <div class="shell">
+        <p>&copy; {year} {LEGAL.name}. Alle Rechte vorbehalten.</p>
+      </div>
+    </footer>
+  </body>
+</html>

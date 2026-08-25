@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "varsha-website",
+  "compatibility_date": "2026-08-14",
+  // Declared explicitly so deploying preserves the live routes rather than
+  // syncing them away. These match what the worker already served.
+  "routes": [
+    { "pattern": "varsha.de/*", "zone_name": "varsha.de" },
+    { "pattern": "www.varsha.de/*", "zone_name": "varsha.de" }
+  ],
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": true }
+}

@@ -1,0 +1,268 @@
+---
+import "../styles/global.css";
+import { LEGAL } from "../legal";
+
+const a = LEGAL.address;
+const host = LEGAL.processors.hosting;
+const tel = LEGAL.processors.telephony;
+const auth = LEGAL.supervisoryAuthority;
+const canonical = new URL("/datenschutz", Astro.site).href;
+const year = new Date().getUTCFullYear();
+
+const h2 = "font-size:1.125rem;margin:2.25rem 0 .5rem";
+const h3 = "font-size:1rem;margin:1.5rem 0 .4rem";
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Datenschutzerklärung — {LEGAL.name}</title>
+    <meta
+      name="description"
+      content={`Datenschutzerklärung nach Art. 13 DSGVO für die Website von ${LEGAL.name}.`}
+    />
+    <link rel="canonical" href={canonical} />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="shell topbar__inner">
+        <a class="topbar__name" href="/">{LEGAL.name}</a>
+        <nav>
+          <ul class="langs">
+            <li><a href="/">Startseite</a></li>
+            <li><a href="/impressum">Impressum</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="band" style="border-bottom:0">
+      <div class="shell" style="max-width:44rem">
+        <p class="label">Informationen nach Art. 13 DSGVO</p>
+        <h1 style="font-size:clamp(2rem,4vw,2.75rem);margin:.5rem 0 1rem">
+          Datenschutzerklärung
+        </h1>
+        <p style="color:var(--muted)">Stand: {LEGAL.privacyLastUpdated}</p>
+
+        <h2 style={h2}>1. Verantwortliche</h2>
+        <p>
+          Verantwortlich für die Datenverarbeitung auf dieser Website im Sinne
+          des Art. 4 Nr. 7 DSGVO ist:
+        </p>
+        <p>
+          {LEGAL.name}<br />
+          {LEGAL.role}<br />
+          {a.street}<br />
+          {a.postcode}&nbsp;{a.city}<br />
+          {a.country}<br />
+          E-Mail: <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a><br />
+          Telefon: {LEGAL.phone}
+        </p>
+        <p>
+          Eine Datenschutzbeauftragte ist nicht bestellt. Die gesetzlichen
+          Voraussetzungen für eine Benennungspflicht nach Art. 37 DSGVO in
+          Verbindung mit § 38 BDSG liegen nicht vor.
+        </p>
+
+        <h2 style={h2}>2. Grundsätzliches</h2>
+        <p>
+          Diese Website ist bewusst datensparsam gebaut. Sie setzt keine
+          Cookies, bindet keine Analyse-, Tracking- oder Werbedienste ein und
+          führt kein JavaScript aus. Es gibt kein Kontaktformular, keine
+          Registrierung und keinen Newsletter. Aus diesem Grund ist auch kein
+          Einwilligungsbanner erforderlich: Es findet kein Zugriff auf
+          Informationen in Ihrem Endgerät statt, der über das für die
+          Auslieferung der Seite unbedingt Erforderliche hinausgeht (§ 25 Abs. 2
+          Nr. 2 TDDDG).
+        </p>
+        <p>
+          Sämtliche Schriftarten werden von diesem Server ausgeliefert. Es
+          werden keine externen Schriftbibliotheken wie Google Fonts
+          eingebunden; beim Aufruf der Seite entsteht daher keine Verbindung zu
+          Servern Dritter.
+        </p>
+
+        <h2 style={h2}>3. Hosting und Auslieferung der Website</h2>
+        <p>
+          Die Website wird bereitgestellt durch {host.name}, {host.address}.
+          Die Anbieterin verarbeitet die nachstehenden Daten in unserem Auftrag
+          auf Grundlage eines Vertrags über Auftragsverarbeitung nach Art. 28
+          DSGVO.
+        </p>
+        <p>
+          Beim Aufruf der Website werden automatisch Daten verarbeitet, die Ihr
+          Browser übermittelt und die technisch erforderlich sind, um die Seite
+          anzuzeigen:
+        </p>
+        <ul class="quals">
+          <li>IP-Adresse des anfragenden Endgeräts</li>
+          <li>Datum und Uhrzeit des Zugriffs</li>
+          <li>Name und URL der abgerufenen Datei</li>
+          <li>übertragene Datenmenge und Meldung über den Abrufstatus</li>
+          <li>verwendeter Browsertyp und dessen Version sowie Betriebssystem</li>
+          <li>gegebenenfalls die zuvor besuchte Seite (Referrer)</li>
+        </ul>
+        <p>
+          <strong>Zweck:</strong> Auslieferung der Website, Gewährleistung von
+          Stabilität und Betriebssicherheit sowie Abwehr von Angriffen.<br />
+          <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO. Unser
+          berechtigtes Interesse besteht an einer technisch fehlerfreien und
+          sicheren Bereitstellung dieser Website.<br />
+          <strong>Speicherdauer:</strong> Die Daten werden nach den Vorgaben der
+          Anbieterin kurzfristig gelöscht und nicht mit anderen Datenquellen
+          zusammengeführt. Es findet keine Auswertung zu Zwecken der
+          Reichweitenmessung oder der Profilbildung statt.
+        </p>
+
+        <h3 style={h3}>Datenübermittlung in die USA</h3>
+        <p>
+          {host.name} hat ihren Sitz in den Vereinigten Staaten. Eine
+          Verarbeitung personenbezogener Daten in einem Drittland kann daher
+          nicht ausgeschlossen werden.
+          {
+            host.dpfCertified ? (
+              <>
+                {" "}Die Anbieterin ist unter dem EU-U.S. Data Privacy Framework
+                zertifiziert. Für die Übermittlung besteht damit ein
+                Angemessenheitsbeschluss der Europäischen Kommission nach Art. 45
+                DSGVO. Ergänzend werden Standardvertragsklauseln nach Art. 46
+                Abs. 2 lit. c DSGVO zugrunde gelegt.
+              </>
+            ) : (
+              <>
+                {" "}Grundlage der Übermittlung sind Standardvertragsklauseln nach
+                Art. 46 Abs. 2 lit. c DSGVO.
+              </>
+            )
+          }
+        </p>
+
+        <h2 style={h2}>4. Kontaktaufnahme</h2>
+        <h3 style={h3}>Per E-Mail</h3>
+        <p>
+          Wenn Sie mich per E-Mail kontaktieren, verarbeite ich Ihre
+          E-Mail-Adresse sowie die Angaben, die Sie in Ihrer Nachricht machen,
+          zur Bearbeitung Ihres Anliegens.
+        </p>
+        <p>
+          <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO, soweit
+          Ihre Anfrage auf den Abschluss oder die Durchführung eines Vertrags
+          gerichtet ist; im Übrigen Art. 6 Abs. 1 lit. f DSGVO aufgrund des
+          berechtigten Interesses an der Beantwortung von Anfragen.<br />
+          <strong>Speicherdauer:</strong> bis zur abschließenden Bearbeitung
+          Ihres Anliegens, darüber hinaus nur, soweit handels- oder
+          steuerrechtliche Aufbewahrungsfristen bestehen (regelmäßig sechs
+          beziehungsweise zehn Jahre nach § 257 HGB, § 147 AO).
+        </p>
+
+        <h3 style={h3}>Per Telefon</h3>
+        <p>
+          Der angegebene Telefonanschluss wird über die {tel.name}, {tel.address},
+          als Anbieterin für IP-Telefonie bereitgestellt. Bei einem Anruf werden
+          Verbindungsdaten einschließlich Ihrer Rufnummer verarbeitet. Gespräche
+          werden nicht aufgezeichnet. Rechtsgrundlage und Speicherdauer
+          entsprechen den Angaben zur Kontaktaufnahme per E-Mail.
+        </p>
+
+        <h2 style={h2}>5. Externe Links</h2>
+        <p>
+          Diese Website verlinkt auf externe Angebote, insbesondere auf ein
+          Profil bei LinkedIn (LinkedIn Ireland Unlimited Company, Wilton Plaza,
+          Wilton Place, Dublin 2, Irland). Es handelt sich um einfache
+          Verweise&nbsp;— es werden keine Inhalte, Schaltflächen oder Zählpixel
+          dieser Anbieter eingebettet. Eine Datenübermittlung findet erst statt,
+          wenn Sie den Link aktiv anklicken. Für die Verarbeitung auf den
+          verlinkten Seiten sind ausschließlich deren Anbieter verantwortlich.
+        </p>
+
+        <h2 style={h2}>6. Berufliche Verschwiegenheit</h2>
+        <p>
+          Im Rahmen von Dolmetschaufträgen erlange ich regelmäßig Kenntnis von
+          vertraulichen Inhalten. Diese unterliegen der beruflichen
+          Verschwiegenheit und werden weder veröffentlicht noch an Dritte
+          weitergegeben. Vorbereitungsmaterialien werden nach Abschluss des
+          jeweiligen Auftrags gelöscht, soweit keine abweichende Vereinbarung
+          mit der Auftraggeberin oder dem Auftraggeber besteht.
+        </p>
+
+        <h2 style={h2}>7. Verschlüsselung</h2>
+        <p>
+          Diese Website wird ausschließlich über eine mit TLS verschlüsselte
+          Verbindung ausgeliefert (erkennbar an „https“ in der Adresszeile
+          Ihres Browsers). Die Inhalte können auf dem Übertragungsweg nicht von
+          Dritten mitgelesen werden.
+        </p>
+
+        <h2 style={h2}>8. Ihre Rechte</h2>
+        <p>Sie haben mir gegenüber die folgenden Rechte:</p>
+        <ul class="quals">
+          <li>Auskunft über die zu Ihrer Person verarbeiteten Daten (Art. 15 DSGVO)</li>
+          <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
+          <li>Löschung (Art. 17 DSGVO)</li>
+          <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+          <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+          <li>
+            Widerspruch gegen Verarbeitungen, die auf Art. 6 Abs. 1 lit. f
+            DSGVO beruhen (Art. 21 DSGVO)
+          </li>
+        </ul>
+        <p>
+          Zur Ausübung genügt eine formlose Nachricht an
+          <a href={`mailto:${LEGAL.email}`}> {LEGAL.email}</a>.
+        </p>
+
+        <div class="combination" style="margin-top:1.5rem">
+          <h3 style="margin-bottom:.4rem">Widerspruchsrecht nach Art. 21 DSGVO</h3>
+          <p>
+            Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen
+            Situation ergeben, jederzeit gegen die Verarbeitung Sie betreffender
+            personenbezogener Daten Widerspruch einzulegen, die auf Grundlage
+            von Art. 6 Abs. 1 lit. f DSGVO erfolgt.
+          </p>
+        </div>
+
+        <h2 style={h2}>9. Beschwerderecht</h2>
+        <p>
+          Unbeschadet anderweitiger Rechtsbehelfe steht Ihnen ein
+          Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde zu (Art. 77
+          DSGVO). Zuständig ist:
+        </p>
+        <p>
+          {auth.name}<br />
+          {auth.address}<br />
+          Telefon: {auth.phone}<br />
+          <a href={auth.web} rel="noopener">{auth.web}</a>
+        </p>
+
+        <h2 style={h2}>10. Keine automatisierte Entscheidungsfindung</h2>
+        <p>
+          Eine automatisierte Entscheidungsfindung einschließlich Profiling nach
+          Art. 22 DSGVO findet nicht statt.
+        </p>
+
+        <h2 style={h2}>11. Änderungen dieser Erklärung</h2>
+        <p>
+          Diese Datenschutzerklärung wird angepasst, sobald sich die
+          Datenverarbeitung auf dieser Website oder die rechtlichen Vorgaben
+          ändern. Es gilt jeweils die hier veröffentlichte Fassung.
+        </p>
+
+        <p style="margin-top:2.5rem">
+          <a href="/">← Zurück zur Startseite</a> &middot;
+          <a href="/impressum">Impressum</a>
+        </p>
+      </div>
+    </main>
+
+    <footer class="foot">
+      <div class="shell">
+        <p>&copy; {year} {LEGAL.name}. Alle Rechte vorbehalten.</p>
+      </div>
+    </footer>
+  </body>
+</html>
